@@ -1,26 +1,30 @@
-x_initial = 1
-fraction_sum = 0
+import numpy as np
 
+# =============================================================================
+# continued fraction 1 + 1/(1 + 1/...)
+# =============================================================================
+a_initial = 1
 
-def f(x):
-    if x >= 1:
-        x = 1 + (1 / f(x))
-    return x
+while True:
+    a_next = 1 / (1 + a_initial)
 
+    if abs(a_next - a_initial) < 1e-16:
+        print(a_initial)
+        break
 
-fraction_sum += f(x_initial)
+    a_initial = a_next
 
-# for i in range(1, 100):
-#     x = 1 + (1 / x)
-#
-# print(fraction_sum)
+# =============================================================================
+# continued square root sqrt(1 + sqrt(1 + ...)
+# =============================================================================
 
+b_initial = 1
 
-# print(array)
+while True:
+    b_next = np.sqrt(1 + b_initial)
 
-# curr_x = 1
-# root_sum = 0
-#
-# for j in range(100):
-#     root_sum += np.sqrt(curr_x)
-#     curr_x = root_sum
+    if abs(b_next - b_initial) < 1e-8:
+        print(b_initial)
+        break
+
+    b_initial = b_next
