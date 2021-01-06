@@ -1,32 +1,47 @@
 from numpy import *
 
 
-def makeW(size):
+def make_w(n):
+    w = zeros([n, n])
     multi = sqrt(2) / 2
-    W = zeros([size, size])
-    c = 0
-    h = int(size / 2)
-    for i in range(size - h):
-        W[i][c] = 1
-        W[i + h][c] = -1
-        c += 1
-        W[i][c] = 1
-        W[i + h][c] = 1
-        c += 1
-    W = W * multi
-    return W
+    mid = n // 2
+
+    for i in range(mid):
+        j = 2 * i
+        w[i, j] = 1
+        w[i, j + 1] = 1
+        w[mid, j] = -1
+        w[mid, j + 1] = 1
+        mid += 1
+    return w * multi
+
+
+# def makeW(size):
+#     multi = sqrt(2) / 2
+#     W = zeros([size, size])
+#     c = 0
+#     h = int(size / 2)
+#     for i in range(size - h):
+#         W[i][c] = 1
+#         W[i + h][c] = -1
+#         c += 1
+#         W[i][c] = 1
+#         W[i + h][c] = 1
+#         c += 1
+#     W = W * multi
+#     return W
 
 
 def inverse_haar_transformation(m):
-    I = get_components(m)
+    I = stack_submatrices(m)
     rows, cols = I.shape
 
-    w = makeW(cols)
-    w_inverse = makeW(rows).T
+    w = make_w(cols)
+    w_inverse = make_w(rows).T
     return dot(dot(w_inverse, I), w)
 
 
-def get_components(m):
+def stack_submatrices(m):
     h1 = hstack([m[0], m[1]])
     h2 = hstack([m[2], m[3]])
     I = vstack([h1, h2])
@@ -44,12 +59,12 @@ def trim_image(image):
     return image[0:rows, 0:cols]
 
 
-def destroy_vec(vec):
+def avg_diff_vec(vec):
     mid = len(vec) // 2
     multi = sqrt(2) / 2
     new_vec = zeros(len(vec))
 
-    for i in range(len(vec) // 2):
+    for i in range(mid):
         j = 2 * i
         s = vec[j] + vec[j + 1]
         d = vec[j + 1] - vec[j]

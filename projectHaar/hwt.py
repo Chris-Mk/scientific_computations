@@ -10,8 +10,8 @@ def haar_transformation(image):
     image = trim_image(image)
     rows, cols = image.shape
 
-    w = makeW(rows)
-    w_inverse = makeW(cols).T
+    w = make_w(rows)
+    w_inverse = make_w(cols).T
 
     trans_img = dot(dot(w, image), w_inverse)
     mid_r, mid_c = rows // 2, cols // 2
@@ -22,14 +22,13 @@ def haar_transformation(image):
     D = trans_img[mid_r:rows, mid_c:cols]
 
     return A, B, C, D
-    # return trans_img
 
 
 # start_time = t.time()
-# img_comp = haar_transformation(img)
+# comp_img = haar_transformation(img)
 # print("Matrix haar=", t.time() - start_time)
-# imshow(get_components(img_comp), cmap='gray')
-# imshow(inverse_haar_transformation(img_comp), cmap='gray')
+# imshow(stack_submatrices(comp_img), cmap='gray')
+# imshow(inverse_haar_transformation(comp_img), cmap='gray')
 
 # io.imwrite("./files/new_kvinna.jpg", get_components(img_comp))
 
@@ -40,11 +39,11 @@ def direct_haar(image):
 
     for index in range(cols):
         curr_col = image[:, index]
-        image[:, index] = destroy_vec(curr_col)
+        image[:, index] = avg_diff_vec(curr_col)
 
     for index in range(rows):
         curr_row = image[index, :]
-        image[index, :] = destroy_vec(curr_row)
+        image[index, :] = avg_diff_vec(curr_row)
 
     return image
 
@@ -52,5 +51,3 @@ def direct_haar(image):
 # direct_haar(img)
 # print("Direct haar=", t.time() - str_time)
 # imshow(direct_haar(img), cmap='gray')
-
-
