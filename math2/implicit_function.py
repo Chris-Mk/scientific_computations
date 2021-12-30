@@ -43,8 +43,8 @@ def p2(x, y):
     return A * x + B * y + C * x ** 2 + D * x * y + E * y ** 2
 
 
-ax.contour3D(X, Y, p2(X, Y), 100)
+# ax.contour3D(X, Y, p2(X, Y), 100)
 #
 # # ****************************************
 # Plot of absolute error e(x, y)
-ax.contour3D(X, Y, abs(Z - p2(X, Y)), 100)
+# ax.contour3D(X, Y, abs(Z - p2(X, Y)), 100)

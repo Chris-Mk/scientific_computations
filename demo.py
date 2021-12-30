@@ -1,47 +1,37 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Sep 16 22:14:51 2020
-
-@author: Chris
-"""
-import numpy as np
-
-#
-# a = [1 / 2 ** k for k in range(100)]
-#
-# print(sum(a))
-
-matrix = np.arange(15)
-print(matrix.shape)
-
-x = np.array([[1, 2, 3, 4], [9, 8, 2, 6]])
-y = np.array([(1, 2, 3, 4), (9, 8, 2, 6)])
-
-# a = [[1, 2, 3, 4], [9, 8, 2, 6]]
-# b = [(1, 2, 3, 4), (9, 8, 2, 6)]
-#
-# print(a)
-# print(len(b))
-# print(a == b)
-
-# print(y.data)
-# print(f"x is {x.size} and y is {y.size}")
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from numpy import *
 
 
-onesArray = np.ones((2, 2))
-zeroArray = np.zeros((2, 2))
-randomArray = np.empty((2, 2))
-
-# print(onesArray, zeroArray, randomArray, sep=",\n", end="!!", )
-# print(zeroArray)
-# print(randomArray)
+def wave_maker(A, B, t, x, omega, k):
+    x, t = np.meshgrid(x, t)
+    return A * np.sin(k * x + omega * t) + B * np.cos(k * x + omega * t)
 
 
-# duck = np.linspace(1, 5, 25)
-# print(duck)
+def plot_wave(xvals, wave, t, i):
+    # Clear the current plot figure
+    plt.clf()
+    plt.title(f"Wave at t = {t[i]:.0f} seconds")
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
+    plt.ylim(-1.1, 1.1)
+    # This is to plot u_k (u at time-step k)
+    plt.plot(xvals, wave[i], color='yellow')
+    return plt
 
-print(type(list(range(1, 10, 3))))
-print(type(range(1, 10, 3)))
-print(type(np.arange(1, 10, 3)))
-print(type(np.array([1, 10, 3])))
-print(type(np.linspace(1, 10, 3)))
+
+def animate(i):
+    plot = plot_wave(xrange, wave, times, i)
+
+
+max_iterations = 60
+# frame_scaling = 4
+times = np.arange(0, max_iterations, 1)
+xrange = np.linspace(0, 10, max_iterations)
+omega = np.pi
+k = 2.5
+wave = wave_maker(A=0.9, B=0.5, t=times, x=xrange, omega=omega, k=k)
+anim = animation.FuncAnimation(plt.figure(), animate, interval=1,
+                               frames=max_iterations, repeat=False)
+# anim.save("sinwave.gif", fps=10, writer='pillow')
+# print('done')
