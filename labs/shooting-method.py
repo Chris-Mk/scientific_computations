@@ -41,13 +41,24 @@ def bisection(nodes, s):
             e_max = mid_energy
         elif curr_nodes == nodes:
             q = sqrt(-mid_energy)
-            phi_test = phi[-2] / phi[-1] - exp(q * h) * phi[-1] ** 2
+            phi_test = phi[-2] * phi[-1] - exp(q * h) * phi[-1] ** 2
             if phi_test < 0:
                 e_min = mid_energy
             elif phi_test > 0:
                 e_max = mid_energy
     return energy
 
+
+# xi_max = int(8 + 4)
+# xi_min = -xi_max
+# steps = 100 * 2 * xi_max
+# nu0 = 6
+# xi = linspace(xi_min, xi_max, steps)
+# h = (xi_max - xi_min) / steps
+# energy = (bisection(1, 4))
+# p = get_phi(energy, 4)[1]
+# print(energy)
+# plot(xi, p)
 
 S = linspace(0, 4, 100)
 for n in range(4):
