@@ -34,8 +34,8 @@ rhs = data['chi/eV']
 slope, y_inter, *a = linregress(rhs, lhs)
 print(slope)
 
-xlabel('Constant K')
-ylabel('$\chi$ [eV]')
+xlabel('$\chi$ [eV]')
+ylabel('Constant K')
 plot(rhs, lhs, 'ro', label='Data points')
 plot(rhs, slope * rhs + y_inter, label='Linear regression')
 legend()
