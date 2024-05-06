@@ -1,0 +1,19 @@
+Spectrum Label	Sn	Au	Total	Project Path
+Spectrum 2	34.73	65.27	100.00	ANP24/1.8 cm/Site 2
+Spectrum 3	36.52	63.48	100.00	ANP24/1.8 cm/Site 2
+Spectrum 4	35.39	64.61	100.00	ANP24/1.8 cm/Site 2
+Spectrum 5	34.77	65.23	100.00	ANP24/1.8 cm/Site 2
+Spectrum 6	35.24	64.76	100.00	ANP24/1.8 cm/Site 3
+Spectrum 7	35.94	64.06	100.00	ANP24/1.8 cm/Site 3
+Spectrum 8	35.25	64.75	100.00	ANP24/1.8 cm/Site 3
+Spectrum 9	35.21	64.79	100.00	ANP24/1.8 cm/Site 3
+Spectrum 10	35.52	64.48	100.00	ANP24/1.8 cm/Site 4
+Spectrum 11	34.67	65.33	100.00	ANP24/1.8 cm/Site 4
+Spectrum 12	34.74	65.26	100.00	ANP24/1.8 cm/Site 4
+Spectrum 13	35.54	64.46	100.00	ANP24/1.8 cm/Site 4
+
+Statistic	Sn	Au
+Max	36.52	65.33
+Min	34.67	63.48
+Average	35.29	64.71
+Standard Deviation	0.55	0.55
