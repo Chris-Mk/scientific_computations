@@ -20,3 +20,4 @@ G = quad(lambda E: f_prime(E) * T(E), -1, 1)
 E_array = linspace(-10 * kT, 10 * kT, 1000)
 
 plot(E_array, f_prime(E_array))
+show(block=True)
