@@ -30,6 +30,5 @@ def Lockin_Amplifier(RAM_signal, RAM_info, nHarmonic):
     # Original signal
     WMS_data['wms'] = 2 * np.real(WMS_data['wms'] * np.exp(-1j * WMS_data['beta']))
     WMS_data['meanValue'] = np.abs(WMS_data['meanValue'] * 2)
-    print(WMS_data)
 
     return WMS_data
