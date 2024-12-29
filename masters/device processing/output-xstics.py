@@ -23,5 +23,6 @@ plot(drainV5, drainI5, label='V$_G$=1V')
 plot(drainV6, drainI6, label='V$_G$=2V')
 plot(drainV7, drainI7, label='V$_G$=3V')
 legend()
+show(block=True)
 
 # savefig('./masters/graphs/output-xstics.pdf')
