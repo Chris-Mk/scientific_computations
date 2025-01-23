@@ -1,15 +1,16 @@
 from matplotlib.pyplot import *
 from numpy import *
+import scipy.constants as sc
 
 t1 = 1 / (273 + array([325, 350, 375]))
 k1 = log(array([4.57, 6.73, 11.78]))
 fit1 = polyfit(t1, k1, 1)
-print(fit1)
+print(-fit1 * sc.gas_constant)
 
 t2 = 1 / (273 + array([490, 500, 525]))
 k2 = log(array([3.43, 7.23, 16.7]))
 fit2 = polyfit(t2, k2, 1)
-print(fit2)
+print(-fit2 * sc.gas_constant)
 
 # grid()
 # xlabel('1/T [1/K]')
